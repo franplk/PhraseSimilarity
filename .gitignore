@@ -1,0 +1,14 @@
+# compiled
+__pycache__/
+venv/
+
+# idea
+.idea/
+
+test/
+
+# build files
+build/
+dist/
+
+error.txt

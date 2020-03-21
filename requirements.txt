@@ -1,0 +1,7 @@
+Flask==1.1.1
+Flask-Script==2.0.6
+Flask-HTTPAuth==3.3.0
+
+gensim==3.8.1
+jieba==0.42.1
+# pyemd==0.5.1
