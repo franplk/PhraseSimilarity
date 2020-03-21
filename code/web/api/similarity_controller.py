@@ -11,7 +11,7 @@ from web.services import SimilarityService
 route_api = Blueprint("api_page", __name__)
 
 
-@route_api.route('/compare', methods=['GET', 'POST'])
+@route_api.route('/similarity/compare', methods=['GET', 'POST'])
 def sim_compare():
     req_value = dict(request.values)
     sen1 = req_value.get('sen1', '')
@@ -20,7 +20,7 @@ def sim_compare():
     return WebHelper.json_render(data=result)
 
 
-@route_api.route('/compare/<mode>', methods=['GET', 'POST'])
+@route_api.route('/similarity/compare/<mode>', methods=['GET', 'POST'])
 def sim_map(mode):
     req_value = dict(request.values)
     sens = req_value.get('sens', '')
