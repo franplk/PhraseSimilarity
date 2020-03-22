@@ -15,7 +15,8 @@ from model import PhraseSimilarity
 
 sim_obj = PhraseSimilarity(model_path='[自定义模型]')
 
-model_path：该参数需要用户指定模型的地址，测试模型可以通过文档下方的模型获取下载，或者用户可以自己使用Gensim库的Word2vec模型进行训练获得
+model_path：该参数需要用户指定模型的地址，测试模型可以通过文档下方的模型获取下载，
+或者用户可以自己使用Gensim库的Word2vec模型进行训练获得
 ```
 
 
