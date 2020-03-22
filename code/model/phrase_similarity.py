@@ -39,8 +39,8 @@ def levenshtein_distance(sentence1, sentence2):
 
 class PhraseSimilarity(object):
     
-    def __init__(self, model_path='E:\\TestFiles\\work2vec\\model\\model_50_3_sg1.bin'):
-        self.model_path = model_path
+    def __init__(self, model_path):
+        """加载模型"""
         self.word_vectors = KeyedVectors.load_word2vec_format(model_path, binary=True)
 
     def compare(self, sentence1, sentence2, seg=True):
@@ -75,6 +75,25 @@ class PhraseSimilarity(object):
             r = abs(r)
         r = min(r, 1.0)
         return float("%.3f" % r)
+
+    def compare_matrix(self, phrase_list):
+        """依次对比短语列表相似度
+        @param phrase_list: 短语列表
+        """
+        sim_matrix = [
+            [self.compare(outer, inner) for inner in phrase_list]
+            for outer in phrase_list
+        ]
+        return sim_matrix
+
+    def compare_map(self, phrase_list):
+        """两两对比短语列表相似度"""
+        sim_map = {}
+        words_count = len(phrase_list)
+        for i in range(words_count - 1):
+            for j in range(i + 1, words_count):
+                sim_map['k-{}-{}'.format(i, j)] = self.compare(phrase_list[i], phrase_list[j])
+        return sim_map
 
     def get_sentence_vec(self, sentence, normalize=False):
         vectors = []
@@ -119,7 +138,7 @@ class PhraseSimilarity(object):
 
 
 if __name__ == '__main__':
-    p_sim = PhraseSimilarity()
+    p_sim = PhraseSimilarity(model_path='E:\\model\\model_1.bin')
     while True:
         sens = input('输入两个短语:')
         sen_list = sens.split(';')
