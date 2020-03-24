@@ -17,6 +17,8 @@ class SimilarityService(object):
         @param sen1: 短语一
         @param sen2: 短语二
         """
+        if not sen1 or not sen2:
+            raise APIError(message='短语参数不全')
         similarity = cls.phrase_sim.compare(sen1, sen2, seg=True)
         return '{:.2f}'.format(similarity)
 
