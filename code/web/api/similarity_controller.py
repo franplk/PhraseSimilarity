@@ -21,7 +21,7 @@ def sim_compare():
 
 
 @route_api.route('/similarity/mutual', methods=['GET', 'POST'])
-def sim_map():
+def sim_mutual():
     req_value = dict(request.values)
     mode = req_value.get('mode', 'map')
     sens = req_value.get('sens', '')
