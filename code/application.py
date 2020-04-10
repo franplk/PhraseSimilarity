@@ -6,6 +6,9 @@
 
 from flask import Flask
 
+from web.functions import UrlManager
+from web.functions import CustomJSONEncoder
+
 
 class Application(Flask):
     """
@@ -14,11 +17,21 @@ class Application(Flask):
     2. 根据环境读取配置文件
     """
 
+    json_encoder = CustomJSONEncoder
+
     def __init__(self, import_name, template_folder, static_folder):
         super().__init__(import_name, template_folder=template_folder, static_folder=static_folder)
         self.config.from_json('config/server.json')
         self.config.from_json('config/model.json')
 
+        # 注册模板函数
+        self._url_manager()
+
+    def _url_manager(self):
+        """函数模板"""
+        release_version = self.config.get('RELEASE_VERSION')
+        UrlManager(self, version=release_version)
+
 
 '''应用初始化'''
-app = Application(__name__, 'templates', 'static')
+app = Application(__name__, 'resource/templates', 'resource/static')

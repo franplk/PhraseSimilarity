@@ -1,0 +1,66 @@
+{% extends "layout/layout_main.html" %}
+{% block content %}
+<!-- 顶部开始 -->
+<div class="container">
+    <div class="logo"><a href="javascript:void(0)">短语相似度测试</a></div>
+    <ul class="layui-nav right" lay-filter="">
+        <li class="layui-nav-item to-index">
+            <a href="http://www.parawork.com/" target="_blank">ParaWork官网</a>
+        </li>
+    </ul>
+</div>
+
+<!-- 左侧菜单开始 -->
+<div class="left-nav">
+    <div id="side-nav">
+        <ul id="nav">
+            <li>
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-diamond"></i>
+                    <cite>短语相似度</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/page/introduce">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>接口说明</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="/page/similar">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>案例测试</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 右侧主体开始 -->
+<div class="page-content">
+    <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+        <ul class="layui-tab-title">
+            <li class="home"><i class="layui-icon">&#xe68e;</i>我的桌面</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <iframe src='/welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+            </div>
+        </div>
+        <div id="tab_show"></div>
+    </div>
+</div>
+<div class="page-content-bg"></div>
+
+<!-- 底部开始 -->
+<div class="footer">
+    <div class="copyright">Copyright ©BSCEA</div>
+</div>
+{% endblock %}
+
+{%block js %}
+<script type="text/javascript" src="{{ buildStaticUrl('/js/index.js') }}"></script>
+{% endblock %}

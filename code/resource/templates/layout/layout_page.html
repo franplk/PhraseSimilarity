@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <title>后台模型管理系统</title>
+    <link rel="stylesheet" href="{{ buildStaticUrl('/css/font.css') }}">
+    <link rel="stylesheet" href="{{ buildStaticUrl('/css/xadmin.css') }}">
+    <style>
+        .layui-form-item {margin: 5px 0;}
+        legend {color: #009688}
+    </style>
+    {%block css %}{% endblock %}
+</head>
+<body class="x-admin-sm">
+<div class="x-body">
+{% block form %}{% endblock %}
+{% block datalist %}{% endblock %}
+</div>
+</body>
+<script type="text/javascript" src="{{ buildStaticUrl('/plugins/layui/layui.js') }}"></script>
+{%block js %}{% endblock %}
+</html>

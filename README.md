@@ -165,9 +165,13 @@ python run_web.py
 
    ```
    {
-   	"code": 200,
-   	"data": "0.50",
-   	"message": "操作成功"
+       "code": 200,
+       "data": {
+           "sen1": "用户信息",
+           "sen2": "新增用户",
+           "similar": "0.51"
+       },
+       "message": "操作成功"
    }
    ```
 

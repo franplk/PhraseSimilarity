@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<title>后台模型管理系统</title>
+    <link rel="stylesheet" href="{{ buildStaticUrl('/css/font.css') }}">
+	<link rel="stylesheet" href="{{ buildStaticUrl('/css/xadmin.css') }}">
+    {%block css %}{% endblock %}
+</head>
+<body class="x-admin-sm">
+{% block content %}{% endblock %}
+</body>
+<script type="text/javascript" src="{{ buildStaticUrl('/plugins/layui/layui.js') }}"></script>
+{%block js %}{% endblock %}
+</html>

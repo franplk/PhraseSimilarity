@@ -1,0 +1,55 @@
+{% extends "layout/layout_page.html" %}
+
+{% block form %}
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">输入短语一：</label>
+        <div class="layui-input-inline">
+            <input class="layui-input" name="sen1" lay-verify="required" lay-verType="tips"/>
+        </div>
+        <label class="layui-form-label">输入短语二：</label>
+        <div class="layui-input-inline">
+            <input class="layui-input" name="sen2" lay-verify="required" lay-verType="tips"/>
+        </div>
+        <button class="layui-btn" type="button" lay-filter="formSearch" lay-submit>
+            计算相似度
+        </button>
+    </div>
+</form>
+{% endblock %}
+
+{% block datalist %}
+<table id="dataTable" lay-filter="dataTable"></table>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+layui.use(['table', 'form'], function(){
+    var table = layui.table;
+    var tableObject = table.render({
+        data:[], elem: '#dataTable', height: 'full-230', loading: true,
+        cols: [[
+            {field: 'sen1', title: '短语一', align: 'center'},
+            {field: 'sen2', title: '短语二', align: 'center'},
+            {field: 'similar', title: '相似度', align: 'center'}
+        ]],
+        parseData: function(res){
+            return {
+                "code": 0,
+                "msg": res.message,
+                "data": [res.data]
+            };
+        }
+    });
+
+    var form = layui.form;
+    form.on('submit(formSearch)', function(formData) {
+        var formParams = formData.field;
+        tableObject.reload({
+            url: '/api/similarity/compare', method: 'post', where: formParams
+        });
+    });
+});
+</script>
+{% endblock %}
+

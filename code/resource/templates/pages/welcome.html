@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>首页-欢迎页</title>
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="{{ buildStaticUrl('/css/font.css') }}">
+    <link rel="stylesheet" href="{{ buildStaticUrl('/css/xadmin.css') }}">
+</head>
+<body class="x-body">
+<blockquote class="layui-elem-quote">当前时间:<span id="nowTime"></span></blockquote>
+<div class="layui-card">
+    <div class="layui-card-header">系统信息</div>
+    <div class="layui-card-body">
+        <table class="layui-table">
+            <tbody>
+            <tr><th>系统版本</th><td>V1.0.0</td></tr>
+            <tr><th>开发语言</th><td>Python</td></tr>
+            <tr><th>作者</th><td>Franplk</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+function sysTime() {
+    var nowTime = new Date();
+    var nowDay = ' 星期' + '日一二三四五六'.charAt(nowTime.getDay());
+    var timeStr = nowTime.toLocaleString() + nowDay;
+    document.getElementById('nowTime').innerHTML = timeStr;
+    setTimeout(sysTime, 1000);
+}
+sysTime();
+</script>
+</html>

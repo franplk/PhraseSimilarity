@@ -8,7 +8,7 @@ from flask import Blueprint, request
 from web.helper import WebHelper
 from web.services import SimilarityService
 
-route_api = Blueprint("api_page", __name__)
+route_api = Blueprint("route_api", __name__)
 
 
 @route_api.route('/similarity/compare', methods=['GET', 'POST'])
@@ -16,8 +16,11 @@ def sim_compare():
     req_value = dict(request.values)
     sen1 = req_value.get('sen1', None)
     sen2 = req_value.get('sen2', None)
-    result = SimilarityService.compare(sen1, sen2)
-    return WebHelper.json_render(data=result)
+    similar = SimilarityService.compare(sen1, sen2)
+    res_data = {
+        'sen1': sen1, 'sen2': sen2, 'similar': similar
+    }
+    return WebHelper.json_render(data=res_data)
 
 
 @route_api.route('/similarity/mutual', methods=['GET', 'POST'])
