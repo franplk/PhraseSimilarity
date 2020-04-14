@@ -36,7 +36,7 @@ Docker容器名称：SimilarityProject
    将项目的代码目录拷贝到要部署的目录下即可
    > cd /home/[用户名]
    > mkdir SimilarityProject
-   > 将目录上传到该目录下
+   > 将项目代码以及模型文件上传到该目录下
    ```
 
 4. 启动项目的Docker容器
@@ -45,7 +45,7 @@ Docker容器名称：SimilarityProject
    切换到项目目录
    > cd /home/[用户名]/SimilarityProject
    运行容器
-   > docker run -d -p 8090:8099 --name SimilarityProject -v $PWD/model:/usr/src/app/model -v $PWD/code:/usr/src/app/code -w /usr/src/app/code python-ps:1.0 python run_web.py
+   > docker run -d -p 8090:8099 --name SimilarityProject -v $PWD/model:/usr/src/app/model -v $PWD/code:/usr/src/app/code -w /usr/src/app/code python-ps-slim:1.0 python run_web.py
    ```
 
 
