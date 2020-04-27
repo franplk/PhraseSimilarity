@@ -21,9 +21,11 @@ class Application(Flask):
 
     def __init__(self, import_name, template_folder, static_folder):
         super().__init__(import_name, template_folder=template_folder, static_folder=static_folder)
-        self.config.from_json('config/server.json')
-        self.config.from_json('config/model.json')
-
+        # 配置文件读取
+        self.config.from_json('config/base.json')
+        run_env = self.config.get('RUN_ENV', 'local')
+        self.config.from_json('config/{}/model.json'.format(run_env))
+        self.config.from_json('config/{}/server.json'.format(run_env))
         # 注册模板函数
         self._url_manager()
 

@@ -11,7 +11,8 @@
 <blockquote class="layui-elem-quote">
     相似词接口使用说明：
     <br/>接口统一访问前缀：http://IP:PORT
-    <br/>本服务访问地址：http://152.136.156.185:8090
+    <br/>IP地址：部署该服务的服务器IP地址
+    <br/>端口PORT：默认8099，可以在config/[环境]/server.json中设置
 </blockquote>
 <fieldset class="layui-elem-field layui-field-title">
   <legend>1.短语相似度对比</legend>
@@ -71,7 +72,7 @@
         <div class="layui-timeline-content layui-text">
             <h5 class="layui-timeline-title">接口请求</h5>
             <p>
-                请求地址：http://localhost:8099/api/similarity/mutual
+                请求地址：/api/similarity/mutual
                 <br/>请求类型：支持GET以及POST
             </p>
         </div>

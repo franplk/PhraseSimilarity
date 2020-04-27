@@ -19,13 +19,12 @@ a = Analysis(['code\\run_web.py'],
              win_private_assemblies=False,
              cipher=block_cipher,
              noarchive=False)
-pyz = PYZ(a.pure, a.zipped_data,
-             cipher=block_cipher)
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
           [],
           exclude_binaries=True,
-          name='runWeb',
+          name='launcher',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,

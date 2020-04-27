@@ -49,6 +49,30 @@ Docker容器名称：SimilarityProject
    ```
 
 
+#### 容器跟随服务器重启而重启
+
+服务器重启后，需要容器内的服务也随之一起重启，从而避免因服务器故障而重新启动，可通过以下两个步骤完成
+
+1. 设置Docker随服务器重启
+
+   ```
+   通过将Docker服务加入服务器初始启动服务里面来完成：
+   > systemctl enable docker.service
+   ```
+
+2. 设置容器随Dokcer重启
+
+   ```
+   方式一：在运行容器时加入参数--restart=always
+   > docker run -d -p 8090:8099 --name=SimilarityProject --restart=always -v $PWD/model:/usr/src/app/model -v $PWD/code:/usr/src/app/code -w /usr/src/app/code python-ps-slim:1.0 python run_web.py
+   
+   方式二：如果容器已经创建，可以试用如下命令更新容器
+   如果容器已经创建，可以试用如下命令更新容器
+   > docker container update --restart=always [容器名字/容器ID]
+   > docker container update --restart=always SimilarityProject
+   ```
+
+
 
 #### 版本更新部署
 
