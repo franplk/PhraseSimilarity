@@ -9,6 +9,7 @@ a = Analysis(['code\\run_web.py'],
              datas=[
                 ('code/config', 'config'),
                 ('code/resource', 'resource'),
+                ('deploy/models', 'models'),
                 ('venv/Lib/site-packages/jieba', 'jieba')
              ],
              hiddenimports=[],

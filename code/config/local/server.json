@@ -1,5 +1,5 @@
 {
-  "DEBUG": true,
+  "DEBUG": false,
   "HOST": "127.0.0.1",
   "SERVER_PORT": 8099,
   "JSON_AS_ASCII": false

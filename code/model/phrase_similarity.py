@@ -125,6 +125,8 @@ class PhraseSimilarity(object):
             second = s1
         ft = set()  # all related words with first sentence
         for x in first:
+            if x not in self.word_vectors.vocab:
+                continue
             ft.add(x)
             word_sim_list = self.word_vectors.similar_by_word(x, 10)
             for o in word_sim_list[:10]:

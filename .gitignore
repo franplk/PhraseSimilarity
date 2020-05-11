@@ -11,4 +11,7 @@ test/
 build/
 dist/
 
+# Big Files
+deploy/models
+
 error.txt
